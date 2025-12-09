@@ -1,0 +1,42 @@
+Bolo Assignment:
+
+This project is a prototype built for the BoloForms assignment to demonstrate reliable placement of signature fields from a browser into a static PDF document.
+
+The focus of this assignment is solving the coordinate mismatch between responsive browser layouts (top-left, pixels) and PDF documents (bottom-left, points).
+
+What’s Implemented
+
+Signature field placement on a document in the browser
+
+Relative (percentage-based) coordinate storage for responsiveness
+
+Backend conversion of browser coordinates to PDF coordinates
+
+Signature burned into the PDF without distortion
+
+SHA-256 hash generated before and after signing
+
+Signed PDF returned and opened in a new tab
+
+Tech Used
+
+React + Vite
+
+Node.js + Express
+
+pdf-lib
+
+How to Run
+Backend
+cd backend
+npm install
+npm start
+
+Frontend
+cd frontend
+npm install
+npm run dev
+
+Note
+
+This is a functional prototype focused on correctness of logic and explainability rather than UI polish or full production features.
