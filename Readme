@@ -4,29 +4,27 @@ This project is a prototype built for the BoloForms assignment to demonstrate re
 
 The focus of this assignment is solving the coordinate mismatch between responsive browser layouts (top-left, pixels) and PDF documents (bottom-left, points).
 
-What’s Implemented
+What’s Implemented:
 
-Signature field placement on a document in the browser
+1.Signature field placement on a document in the browser
 
-Relative (percentage-based) coordinate storage for responsiveness
+2.Relative (percentage-based) coordinate storage for responsiveness
 
-Backend conversion of browser coordinates to PDF coordinates
+3.Backend conversion of browser coordinates to PDF coordinates
 
-Signature burned into the PDF without distortion
+4.Signature burned into the PDF without distortion
 
-SHA-256 hash generated before and after signing
+5.SHA-256 hash generated before and after signing
 
-Signed PDF returned and opened in a new tab
+6.Signed PDF returned and opened in a new tab
 
-Tech Used
+Tech Used:
+1.React + Vite
+2.Node.js + Express
+3.pdf-lib
 
-React + Vite
+How to Run:
 
-Node.js + Express
-
-pdf-lib
-
-How to Run
 Backend
 cd backend
 npm install
@@ -37,6 +35,5 @@ cd frontend
 npm install
 npm run dev
 
-Note
-
+Note:
 This is a functional prototype focused on correctness of logic and explainability rather than UI polish or full production features.
