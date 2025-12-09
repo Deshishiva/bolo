@@ -1,3 +1,7 @@
+const signedPdf = await pdfDoc.save();
+const afterHash = generateHash(signedPdf);
+
+
 const uploadDir = path.join("uploads", "signed-pdfs");
 
 if (!fs.existsSync(uploadDir)) {
@@ -10,3 +14,10 @@ const outputPath = path.join(
 );
 
 fs.writeFileSync(outputPath, signedPdf);
+
+res.json({
+  success: true,
+  url: outputPath,
+  beforeHash,
+  afterHash
+});
