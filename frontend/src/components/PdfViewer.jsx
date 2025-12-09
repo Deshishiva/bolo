@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { toRelative, toPixels } from "../utils/coordinates";
+import { API_BASE_URL } from "../config";
 
 export default function PdfViewer() {
   const ref = useRef(null);
@@ -29,25 +30,32 @@ export default function PdfViewer() {
 
     setLoading(true);
 
-    const res = await fetch("http://localhost:5000/api/sign-pdf", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        coordinates: box,
-        // dummy signature image for now
-        signatureBase64:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
-      })
-    });
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/sign-pdf`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          coordinates: box,
+          
+          signatureBase64:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
+        })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    setLoading(false);
-
-    if (data.url) {
-      window.open(`http://localhost:5000/${data.url}`, "_blank");
+      if (data.url) {
+        window.open(`${API_BASE_URL}/${data.url}`, "_blank");
+      } else {
+        alert("Failed to sign PDF");
+      }
+    } catch (err) {
+      console.error("Sign PDF error:", err);
+      alert("Error signing PDF");
+    } finally {
+      setLoading(false);
     }
   }
 
